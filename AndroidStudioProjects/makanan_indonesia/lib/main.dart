@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'detail.dart';
 
+
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -18,16 +19,26 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.blue,
           title: Text("Makanan Indonesia"),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.star),
+              color: Colors.white,
+              onPressed: () async {
+               showDialog<IconData>(
+                  context: context,
+                  builder: (context) => MyRating(),
+                );
+              },
+            ),
+          ],
         ),
-        body: _PageList());
+
+        body: _PageStateListState());
   }
 }
-//class
-class _PageList extends StatefulWidget {
-  _PageStateListState createState() => _PageStateListState();
-}
 
-class _PageStateListState extends State<_PageList> {
+class _PageStateListState extends StatelessWidget {
+
   List<String> judul = [
     "Mie Aceh",
     "Bika Ambon",
@@ -53,7 +64,7 @@ class _PageStateListState extends State<_PageList> {
   ];
 
   List<String> penjelasan = [
-    "Ketika berkunjung ke Provinsi Nanggroe Aceh Darussalam akan terasa kurang lengkap jika tidak mencicipi masakan kuliner makanan khas Daerah Aceh.Salah satu menu kuliner asli daerah Aceh adalah mie Aceh. Makanan ini juga termasuk kuliner yang begitu disukai masyarakat Indonesia. Rasa lezat dari hidangan mie Aceh membuat para penikmatnya menjadi ketagihan.Oleh sebab itulah, maka tidak mengherankan jika banyak orang yang berkunjung ke serambi mekkah tersebut mencari kuliner mie Aceh.",
+    "Ketika berkunjung ke Provinsi Nanggroe Aceh Darussalam akan terasa kurang lengkap jika tidak mencicipi masakan kuliner makanan khas Daerah Aceh.Salah satu menu kuliner asli daerah Aceh adalah mie Aceh. Makanan ini juga termasuk kuliner yang begitu disukai masyarakat Indonesia.",
     "Salah satu masakan kuliner asli dari daerah Indonesia adalah bika ambon. Bika ambon merupakan makanan khas dari daerah Medan, Sumatra Utara.Bentuk kuliner berupa kue ini dibuat dari campuran gula, telur dan santan. Biasanya, makanan bika ambon memiliki aroma yang wangi. Aroma wangi dari kuliner tersebut membuatnya menjadi makanan khas Daerah favorit dari Provinsi Sumatra Utara.",
     "Masakan pendap Bengkulu ternyata menjadi kuliner yang populer. Makanan yang yang satu ini biasanya sering dijadikan sebagai oleh – oleh asli Bengkulu. Olahan masakan lezat itu terbuat dari parutan kelapa muda yang di campur dengan bumbu khusus. Biasanya, pendap Bengkulu akan laris manis pada waktu lebaran.",
     "Masakan asli daerah Indonesia lainnya yaitu seruit Lampung. Kuliner ini dibuat dari daging ikan yang dibakar atau digoreng. Daging ikan itu biasanya akan dicampur dengan terasi atau tempoyak. Hidangan model ini akan terasa lebih nikmat apabila disajikan dengan lalapan berupa mentimun atau tomat. Makanan khas lampung ini dijamin bikin lidah berasa bergoyang karena hidangan ini dilengkapi dengan cabai yang pedas dan ditaburi bumbu yang gurih.",
